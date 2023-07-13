@@ -1,11 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
-import 'package:flutter_news/domain/entities/news.dart';
 import 'package:hive_flutter/adapters.dart';
 
 import 'package:flutter_news/data/models/source_model.dart';
+import 'package:flutter_news/domain/entities/news.dart';
 
 part 'news_model.g.dart';
 
@@ -22,7 +23,7 @@ class NewsModel extends Equatable {
   @HiveField(4)
   final String? urlToImage;
   @HiveField(5)
-  final String publishedDate;
+  final DateTime publishedDate;
   @HiveField(6)
   final String? content;
   const NewsModel({
@@ -35,6 +36,21 @@ class NewsModel extends Equatable {
     required this.content,
   });
 
+  // factory NewsModel.fromJson(Map<String, dynamic> json) {
+  //   return NewsModel(
+  //       source: (SourceModel.fromJson(json['source'])),
+  //       author: json['author'] == null ? "Not Found" : json["author"],
+  //       title: json['title'],
+  //       description: json['description'],
+  //       urlToImage: json['urlToImage'],
+  //       publishedDate: DateTime.parse(json['publishedAt']),
+  //       content: json['content']);
+  // }
+
+  @override
+  List<Object?> get props =>
+      [source, author, title, description, urlToImage, publishedDate, content];
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'source': source.toMap(),
@@ -42,7 +58,7 @@ class NewsModel extends Equatable {
       'title': title,
       'description': description,
       'urlToImage': urlToImage,
-      'publishedDate': publishedDate,
+      'publishedDate': publishedDate.toIso8601String(),
       'content': content,
     };
   }
@@ -56,7 +72,7 @@ class NewsModel extends Equatable {
           map['description'] != null ? map['description'] as String : null,
       urlToImage:
           map['urlToImage'] != null ? map['urlToImage'] as String : null,
-      publishedDate: map['publishedDate'] as String,
+      publishedDate: DateTime.parse(map['publishedAt'] as String),
       content: map['content'] != null ? map['content'] as String : null,
     );
   }
@@ -65,22 +81,6 @@ class NewsModel extends Equatable {
 
   factory NewsModel.fromJson(String source) =>
       NewsModel.fromMap(json.decode(source) as Map<String, dynamic>);
-
-  @override
-  List<Object> get props {
-    return [
-      source,
-      author!,
-      title,
-      description!,
-      urlToImage!,
-      publishedDate,
-      content!,
-    ];
-  }
-
-  @override
-  bool get stringify => true;
 }
 
 extension NewsModelExtension on NewsModel {
