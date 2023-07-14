@@ -35,7 +35,6 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: BlocBuilder<NewsBloc, NewsState>(
         builder: (context, state) {
-          print("state : $state");
           if (state is NewsLoading) {
             return const Center(
               child: CircularProgressIndicator(),

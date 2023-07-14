@@ -31,7 +31,6 @@ class NewsRemoteDataSourceImpl extends NewsRemoteDataSource {
           HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8',
         },
       );
-      print("response : ${response.body}");
       switch (response.statusCode) {
         case 200:
           final results = (json.decode(response.body)['articles']);
