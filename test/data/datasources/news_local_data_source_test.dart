@@ -4,7 +4,7 @@ import 'package:flutter_news/core/exceptions.dart';
 import 'package:flutter_news/data/datasources/news_hive_helper.dart';
 import 'package:flutter_news/data/datasources/news_local_data_source.dart';
 import 'package:flutter_news/data/models/news_model.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../json_example/fixture_reader.dart';

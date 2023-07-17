@@ -12,7 +12,9 @@ class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() {
+    return _HomePageState();
+  }
 }
 
 class _HomePageState extends State<HomePage> {
@@ -23,6 +25,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     BlocProvider.of<NewsBloc>(context).add(GetNewsEvent(
       parameters: NewsParams(
+        // ignore: deprecated_member_use
         country: WidgetsBinding.instance.window.locale.countryCode ?? 'ID',
         category: CategoryType.general.categoryName,
       ),
@@ -48,23 +51,21 @@ class _HomePageState extends State<HomePage> {
             final newsOfTheDay = state.news.first;
             return Column(
               children: [
-                Container(
+                SizedBox(
                   height: size.height / 2.5,
                   child: Stack(
                     children: [
-                      Container(
-                        child: NewsOfTheDayWidget(
-                          newsOfTheDay: newsOfTheDay,
-                          onPressed: (news) {
-                            onNewsSelected(news: news, context: context);
-                          },
-                        ),
+                      NewsOfTheDayWidget(
+                        newsOfTheDay: newsOfTheDay,
+                        onPressed: (news) {
+                          onNewsSelected(news: news, context: context);
+                        },
                       ),
                     ],
                   ),
                 ),
                 Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: SizedBox(
                       width: size.width,
                       child: Text(
@@ -116,6 +117,7 @@ class _HomePageState extends State<HomePage> {
         BlocProvider.of<NewsBloc>(context).add(GetNewsEvent(
             parameters: NewsParams(
                 country:
+                    // ignore: deprecated_member_use
                     WidgetsBinding.instance.window.locale.countryCode ?? 'ID',
                 category: CategoryType.values[_selectedIndex].categoryName)));
       }

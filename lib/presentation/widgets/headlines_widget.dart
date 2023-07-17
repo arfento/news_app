@@ -24,7 +24,7 @@ class HeadlinesWidget extends StatelessWidget {
         final dateDifference =
             DateTime.now().difference(newsSingle.publishedDate).inHours;
         return Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: GestureDetector(
             onTap: () => onPressed(newsSingle),
             child: SizedBox(
@@ -45,7 +45,7 @@ class HeadlinesWidget extends StatelessWidget {
                                   as ImageProvider),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   Text(
