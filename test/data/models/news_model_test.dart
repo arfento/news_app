@@ -23,7 +23,6 @@ void main() {
     test('Should successfull convert to a news entity', () {
       expect(model.toNews, isA<News>());
     });
-
     test('Should deserialize model from json', () {
       final jsonMap = json.decode(fixture('news_model.json'));
 
