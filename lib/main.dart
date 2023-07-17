@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter News',
         debugShowCheckedModeBanner: false,
         theme: Themes.appTheme,
-        home: HomePage(),
+        home: const HomePage(),
       ),
     );
   }

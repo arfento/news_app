@@ -6,8 +6,8 @@ import 'package:flutter_news/domain/entities/news.dart';
 import 'package:flutter_news/domain/entities/source.dart';
 import 'package:flutter_news/domain/usecases/get_news_usecase.dart';
 import 'package:flutter_news/presentation/bloc/news_bloc/news_bloc.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:test/test.dart';
 
 class MockGetNews extends Mock implements GetNewsUsecase {}
 

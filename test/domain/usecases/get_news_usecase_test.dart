@@ -5,7 +5,7 @@ import 'package:flutter_news/domain/entities/news.dart';
 import 'package:flutter_news/domain/entities/source.dart';
 import 'package:flutter_news/domain/repository/news_repository.dart';
 import 'package:flutter_news/domain/usecases/get_news_usecase.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockNewsRepository extends Mock implements NewsRepository {}
