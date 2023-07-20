@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MyDummyWidget extends StatelessWidget {
-  MyDummyWidget() : super(key: new Key('MyDummyWidget'));
+  const MyDummyWidget() : super(key: const Key('MyDummyWidget'));
 
   @override
   Widget build(BuildContext context) {
-    return Center();
+    return const Center();
   }
 }

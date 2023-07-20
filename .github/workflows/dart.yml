@@ -14,7 +14,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    environment: 
+      name: API_KEY
     steps:
 #       - name: Hello world action
 #         with: # Set the secret as an input
@@ -25,6 +26,10 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '17.x'
+      - uses: SpicyPizza/create-envfile@v1
+        with:
+          # envkey_ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
+          envkey_APIKEY: ${{ secrets.APIKEY }}
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
