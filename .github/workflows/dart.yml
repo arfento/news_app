@@ -16,6 +16,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Hello world action
+        with: # Set the secret as an input
+          super_secret: ${{ secrets.APIKEY }}
+        env: # Or as an environment variable
+          API_KEY : ${{ secrets.APIKEY}}
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v1
         with:
@@ -40,7 +45,7 @@ jobs:
       # Consider passing '--fatal-infos' for slightly stricter analysis.
       - name: Analyze project source
         run: dart analyze
-
+      
       # Your project will need to have tests in test/ and a dependency on
       # package:test for this step to succeed. Note that Flutter projects will
       # want to change this to 'flutter test'.
